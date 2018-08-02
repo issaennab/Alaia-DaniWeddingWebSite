@@ -1,0 +1,15 @@
+
+.class { behavior:url(js/PIE.htc); position:absolute;}
+
+ul.sf-menu>li>a>span.over_plane{
+	display: none;
+}	
+ul.sf-menu>li.current>a>span.over_plane, ul.sf-menu>li.sfHover>a>span.over_plane, ul.sf-menu>li>a:hover>span.over_plane{display: block;}
+
+.magnifier2:after {
+	display: none;
+}
+	
+.magnifier2:hover:after{
+	display: block;
+}

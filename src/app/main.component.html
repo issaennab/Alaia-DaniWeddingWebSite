@@ -1,0 +1,232 @@
+<!--=======content================================-->
+<div class="slider">
+  <div class="" id="camera_wrap">
+
+    <div style="padding-left: 0%">
+      <img src="../assets/images/main-slide-.png" width="100%" />
+    </div>
+  </div>
+</div>
+
+
+<!-- <div class="slider_wrapper">
+        <div class="" id="camera_wrap">
+            <div data-src="../assets/images/slide1.jpg"></div>
+            <div data-src="../assets/images/slide2.jpg"></div>
+            <div data-src="../assets/images/slide3.jpg"></div>
+        </div>
+    </div> -->
+
+
+
+<div class="container_12" style="margin-top: 2.5%">
+  <div class="grid_12">
+    <h2 class="hline2">PineCrest Event Centre</h2>
+    <h3 class="v2">17 Vinyl Ct, Woodbridge, ON L4L 4A3</h3>
+    <!--
+        <div class="txt_cntr">
+          <div class="dis-inblock">
+            <div class="counter_section">
+              <div class="plane">{{days}}</div>
+              <p>days</p>
+            </div>
+            <div class="counter_separate"></div>
+            <div class="counter_section">
+              <div class="plane">23</div>
+              <p>hours</p>
+            </div>
+            <div class="counter_separate"></div>
+            <div class="counter_section">
+              <div class="plane">58</div>
+              <p>minutes</p>
+            </div>
+            <div class="counter_separate"></div>
+            <div class="counter_section">
+              <div class="plane">{{seconds}}</div>
+              <p>seconds</p>
+            </div>
+          </div>
+        </div>
+      -->
+    <div id="counter"></div>
+
+
+
+    <div class="container_12" style="margin-top: 4%; margin-bottom: 10%">
+      <div class="grid_12" style="align-content: center">
+
+        <h2 class="hline2">Whatver</h2>
+
+        <div style="margin-bottom: 8%; margin-top: 5%;font-family: 'Karma', serif; font-size: 140%">
+          <p>
+            A block of rooms for the evenings of Saturday, September 1st and Sunday, September 2nd has been reserved at Esterel Resort
+            under Filiatrault/Thibodeau. While we would love for everyone to stay at the hotel, we understand that this may
+            not be in everyone’s plans.
+          </p>
+          <p>
+            Room fees include breakfast for 2 (between 7:30-10:30am). Breakfast rate for additional guests is $20.70 each. The room
+            rate also includes complimentary all-day access to the pools and Nordic baths, free wifi and parking, and access
+            to the gym. All rooms have a King-size bed, a Double-size sofa bed, a mini fridge, a toaster oven, and a double-sided
+            fireplace
+          </p>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="container_12" style="margin-top: 8%; margin-bottom: 20%">
+      <div class="grid_12">
+        <h2 class="hline2" style="color: #fffeee"> We will be posting photos from the wedding here, so check back after the fun is over!</h2>
+      </div>
+    </div>
+
+    <div class="container_12">
+      <div class="">
+        <h2 class="hline2 v3">Contact Info</h2>
+        <div class="">
+          <figure class="img_inner">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2769.7750849807326!2d-74.02847758442337!3d46.03563617911187!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4ccf4869160bb051%3A0x88800f95ad9601fe!2s39+Chemin+Fridolin-Simard%2C+Est%C3%A9rel%2C+QC+J0T+1E0!5e0!3m2!1sen!2sca!4v1519784492686"
+              width="960" height="400" frameborder="0" style="border:0" allowfullscreen></iframe>
+          </figure>
+
+        </div>
+        <div class="clear"></div>
+      </div>
+    </div>
+
+
+
+    <!-- rsvp starts-->
+
+    <div class="container_12" style="margin-top: 5%; margin-bottom: 5%">
+
+      <h3 class="v2"> You are invited to our wedding celebration! Please RSVP by July 31st so we can accommodate you.
+        </h3>
+
+      <div class="container_12" style="margin-top: 5%; margin-bottom: 5%">
+
+        <h2 class="hline2 v3">RSVP</h2>
+
+        <div *ngIf="messageResponse">
+          <div class="isa_success" style="margin-bottom: 3%">
+            {{ messageResponse | translate }}
+          </div>
+        </div>
+
+        <form method="post" (submit)="sendEmail(message)">
+          <ul class="form-style-1">
+            <li>
+              <label for="fullName">
+                            {{ 'Full Name' | translate }}
+                            <span class="required">*</span>
+                        </label>
+              <input type="text" class="field-divided" name="fullName" value="" [(ngModel)]="message.fullName" />
+            </li>
+            <li>
+              <label for="email">
+                            {{ 'Email' | translate }}
+                            <span class="required">*</span>
+                        </label>
+              <input type="email" class="field-divided" name="email" value="" [(ngModel)]="message.email" />
+            </li>
+            <li>
+              <label for="isAttending">
+                            {{ 'Will you be attending?' | translate }}
+                            <span class="required">*</span>
+                        </label>
+              <select name="isGuestComing" class="field-select" [(ngModel)]="message.isAttending">
+                            <option value="No selection"> {{ 'Please Select' | translate }} </option>
+                            <option value="{{ 'Yes' | translate }}">{{ 'Yes' | translate }}</option>
+                            <option value="{ 'No' | translate }}">{{ 'No' | translate }}</option>
+                        </select>
+            </li>
+            <li>
+              <label for="mealChoice">
+                            {{ 'Meal choice:' | translate }}
+                        </label>
+              <select name="mealChoice" class="field-select" [(ngModel)]="message.mealChoice">
+                            <option value="No selection"> {{ 'Please Select' | translate }} </option>
+                            <option value="{{ 'Chicken' | translate }}">{{ 'Chicken' | translate }}</option>
+                            <option value="{{ 'Beef' | translate }}">{{ 'Beef' | translate }}</option>
+                        </select>
+            </li>
+            <li>
+              <label for="allergies">
+                            {{ 'Allergies/Dietary Restrictions?' | translate }}
+                        </label>
+              <input type="text" class="field-divided" name="allergies1" value="" [(ngModel)]="message.allergies" />
+            </li>
+            <li>
+              <label for="isGuestComing">
+                            {{ 'Are you bringing a guest?' | translate }}
+                            <span class="required">*</span>
+                        </label>
+              <select name="isGuestComing" class="field-select" [(ngModel)]="message.isGuestComing">
+                            <option value="No selection"> {{ 'Please Select' | translate }} </option>
+                            <option value="{{ 'Yes' | translate }}">{{ 'Yes' | translate }}</option>
+                            <option value="{ 'No' | translate }}">{{ 'No' | translate }}</option>
+                        </select>
+            </li>
+            <li style="float: left;">
+              <label for="guestFullName">
+                            {{ 'Your Guest\'s Full Name:' | translate }}
+                            <span class="required">*</span>
+                        </label>
+              <input type="text" class="field-divided" name="guestFullName" value="" [(ngModel)]="message.guestFullName" />
+            </li>
+            <li>
+              <label for="mealChoicePlusOne"> 
+                            {{ 'Meal choice:' | translate }} 
+                        </label>
+              <select name="mealChoicePlusOne" class="field-select" [(ngModel)]="message.mealChoicePlusOne">
+                            <option value="No selection"> {{ 'Please Select' | translate }} </option>
+                            <option value="{{ 'Chicken' | translate }}">{{ 'Chicken' | translate }}</option>
+                            <option value="{{ 'Beef' | translate }}">{{ 'Beef' | translate }}</option>
+                        </select>
+            </li>
+            <li>
+              <label for="allergiesPlusOne">
+                            {{ 'Allergies/Dietary Restrictions?' | translate }}
+                        </label>
+              <input type="text" class="field-divided" name="allergies2" value="" [(ngModel)]="message.allergiesPlusOne" />
+            </li>
+            <li>
+              <label for="songsSuggestion">
+                            {{ 'Songs you’d like to suggest for the party?' | translate }} 
+                        </label>
+              <input type="text" class="field-divided" name="songs" value="" [(ngModel)]="message.songsSuggestion" />
+            </li>
+
+            <li class="field-divided">
+              <input type="submit" value="Submit" />
+            </li>
+          </ul>
+        </form>
+      </div>
+
+
+    </div>
+    <!-- rsvp ends -->
+
+  </div>
+
+</div>
+
+<script type="text/javascript">
+  $(document).ready(function () {
+
+    jQuery('#camera_wrap').camera({
+      loader: false,
+      pagination: false,
+      thumbnails: false,
+      height: '30.208333%',
+      fx: 'blindCurtainTopLeft',
+      rows: '1',
+      slicedCols: '1',
+      slicedRows: '3',
+      caption: false
+    });
+
+  });
+
+</script>

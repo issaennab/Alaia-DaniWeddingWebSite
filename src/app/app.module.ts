@@ -8,6 +8,8 @@ import { appRoutes } from './app-routing.modules';
 import { MainComponent } from './main.component'
 import { GuestInfoComponent } from './guest-info.component'
 import { GalleryComponent } from './gallery.component'
+import { RSVPService } from './main.service'
+import { HttpModule } from '@angular/http';
 
 import { TRANSLATION_PROVIDERS, TranslatePipe, TranslateService }   from './translate';
 @NgModule({
@@ -21,9 +23,10 @@ import { TRANSLATION_PROVIDERS, TranslatePipe, TranslateService }   from './tran
   imports: [
     BrowserModule,
     FormsModule,
-    RouterModule.forRoot(appRoutes)
+    RouterModule.forRoot(appRoutes),
+    HttpModule
   ],
-  providers: [TRANSLATION_PROVIDERS, TranslateService],
+  providers: [TRANSLATION_PROVIDERS, TranslateService, RSVPService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

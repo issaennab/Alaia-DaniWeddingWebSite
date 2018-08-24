@@ -8,7 +8,6 @@
   </div>
 </div>
 
-
 <!-- <div class="slider_wrapper">
         <div class="" id="camera_wrap">
             <div data-src="../assets/images/slide1.jpg"></div>
@@ -21,7 +20,7 @@
 
 <div class="container_12" style="margin-top: 2.5%">
   <div class="grid_12">
-    <h2 class="hline2">PineCrest Event Centre</h2>
+    <h2 class="hline2">PineCrest Event Centre, Sahara Room</h2>
     <h3 class="v2">17 Vinyl Ct, Woodbridge, ON L4L 4A3</h3>
     <!--
         <div class="txt_cntr">
@@ -59,7 +58,7 @@
 
         <div style="margin-bottom: 8%; margin-top: 5%;font-family: 'Karma', serif; font-size: 140%">
           <p>
-            A block of rooms for the evenings of Saturday, October 6th. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed
             do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation
             ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
             velit esse cillum dolore eu fugiat nulla pariatur.
@@ -95,13 +94,11 @@
       </div>
     </div>
 
-
-
     <!-- rsvp starts-->
 
     <div class="container_12" style="margin-top: 5%; margin-bottom: 5%">
 
-      <h3 class="v2"> You are invited to our wedding celebration! Please RSVP by September 15th so we can accommodate you.
+      <h3 class="v2"> You are invited to our wedding celebration! Please RSVP by September 23rd so we can accommodate you.
       </h3>
 
       <div class="container_12" style="margin-top: 5%; margin-bottom: 5%">
@@ -132,70 +129,140 @@
             </li>
             <li>
               <label for="isAttending">
-                Will you be attending? 
+                Will you be attending ? 
                 <span class="required">*</span>
               </label>
-              <select name="isGuestComing" class="field-select" [(ngModel)]="message.isAttending">
+              <select name="isAttending" class="field-select" [(ngModel)]="message.isAttending">
                 <option value="No selection">  Please Select  </option>
-                <option value=" Yes "> Yes </option>
-                <option value="{ 'No "> No </option>
+                <option value="Yes"> Yes </option>
+                <option value="No"> No </option>
               </select>
             </li>
+
+            <!-- <div *ngIf="message.isAttending == yes; else login">
+                The user is logged in.
+            </div>
+            <ng-template #login>Please login to continue.</ng-template> -->
+
+            <aside *ngIf="message.isAttending == 'Yes'">
+              <li>
+                <label for="mealChoice">
+                    Meal choice: 
+                </label>
+                <select name="mealChoice" class="field-select" [(ngModel)]="message.mealChoice">
+                  <option value="No selection">  Please Select  </option>
+                  <option value="Meat"> Meat meal </option>
+                  <option value="Veggie"> Veggie meal </option>
+                </select>
+              </li>
+
+              <li>
+                <label for="allergies">
+                  Allergies/Dietary Restrictions? 
+                </label>
+                <input type="text" class="field-divided" name="allergies1" value="" [(ngModel)]="message.allergies" />
+              </li>
+
+              <li>
+                <label for="isGuestComing">
+                  Are you bringing a guest ? 
+                  <span class="required">*</span>
+                </label>
+                <select name="isGuestComing" class="field-select" [(ngModel)]="message.isGuestComing">
+                  <option value="No selection">  Please Select  </option>
+                  <option value="Adult"> Adult </option>
+                  <option value="Child"> Child </option>
+                  <option value="Adult + Child"> Adult + Child </option>
+                  <option value="2 Adults"> 2 Adults </option>
+                  <option value="2 Adults + Child"> 2 Adults + Child </option>
+                  <!-- <option value="3 Adults"> 3 Adults </option> -->
+                </select>
+              </li>
+            </aside>
+
+            <aside *ngIf="message.isAttending == 'Yes'">
+
+              <aside *ngIf="message.isGuestComing != 'Child'">
+                <li style="float: left;">
+                  <label for="guestFullName">
+                    Your Guest's Full Name: 
+                  <span class="required">*</span>
+                </label>
+                  <input type="text" class="field-divided" name="guestFullName" value="" [(ngModel)]="message.guestFullName" />
+                </li>
+                <li>
+                  <label for="mealChoicePlusOne">
+                    Your Guest's Meal choice: 
+                </label>
+                  <select name="mealChoicePlusOne" class="field-select" [(ngModel)]="message.mealChoicePlusOne">
+                  <option value="No selection">  Please Select  </option>
+                  <option value="Meat"> Meat meal </option>
+                  <option value="Veggie"> Veggie </option>
+                </select>
+                </li>
+                <li>
+                  <label for="allergiesPlusOne">
+                       Allergies/Dietary Restrictions? 
+                    </label>
+                  <input type="text" class="field-divided" name="allergies2" value="" [(ngModel)]="message.allergiesPlusOne" />
+                </li>
+              </aside>
+
+              <aside *ngIf="message.isGuestComing == '2 Adults' || message.isGuestComing == '2 Adults + Child'">
+                <li style="float: left;">
+                  <label for="guestFullNamePlusTwo">
+                      Your Second Guest's Full Name: 
+                    <span class="required">*</span>
+                  </label>
+                  <input type="text" class="field-divided" name="guestFullNamePlusTwo" value="" [(ngModel)]="message.guestFullName" />
+                </li>
+                <li>
+                  <label for="mealChoicePlusTwo">
+                      Your Second Guest's Meal choice: 
+                  </label>
+                  <select name="mealChoicePlusOne" class="field-select" [(ngModel)]="message.mealChoicePlusTwo">
+                    <option value="No selection">  Please Select  </option>
+                    <option value="Meat"> Meat meal </option>
+                    <option value="Veggie"> Veggie </option>
+                  </select>
+                </li>
+                <li>
+                  <label for="allergiesPlusTwo">
+                         Allergies/Dietary Restrictions? 
+                      </label>
+                  <input type="text" class="field-divided" name="allergies2" value="" [(ngModel)]="message.allergiesPlusTwo" />
+                </li>
+              </aside>
+
+              <aside *ngIf="message.isGuestComing == 'Child' || message.isGuestComing == 'Adult + Child' || message.isGuestComing == '2 Adults + Child' ">
+                <li style="float: left;">
+                  <label for="guestName">
+                    Child's Name: 
+                    <span class="required">*</span>
+                  </label>
+                  <input type="text" class="field-divided" name="childName" value="" [(ngModel)]="message.childName" />
+                </li>
+                <li>
+                  <label for="childAge">
+                      How Old is your Child ? <span class="required">*</span>
+                  </label>
+                  <input type="text" class="field-divided" name="childAge" value="" [(ngModel)]="message.childAge" />
+                </li>
+                <li>
+                  <label for="allergiesForChild">
+                       Allergies/Dietary Restrictions? 
+                    </label>
+                  <input type="text" class="field-divided" name="allergiesChild" value="" [(ngModel)]="message.allergiesForChild" />
+                </li>
+              </aside>
+
+            </aside>
+
             <li>
-              <label for="mealChoice">
-                 Meal choice: 
+              <label for="optionalNotes">
+                 Optional Notes
               </label>
-              <select name="mealChoice" class="field-select" [(ngModel)]="message.mealChoice">
-                <option value="No selection">  Please Select  </option>
-                <option value=" Chicken "> Chicken </option>
-                <option value=" Beef "> Beef </option>
-              </select>
-            </li>
-            <li>
-              <label for="allergies">
-                 Allergies/Dietary Restrictions? 
-              </label>
-              <input type="text" class="field-divided" name="allergies1" value="" [(ngModel)]="message.allergies" />
-            </li>
-            <li>
-              <label for="isGuestComing">
-                 Are you bringing a guest? 
-                <span class="required">*</span>
-              </label>
-              <select name="isGuestComing" class="field-select" [(ngModel)]="message.isGuestComing">
-                <option value="No selection">  Please Select  </option>
-                <option value=" Yes "> Yes </option>
-                <option value="{ 'No "> No </option>
-              </select>
-            </li>
-            <li style="float: left;">
-              <label for="guestFullName">
-                 Your Guest\'s Full Name: 
-                <span class="required">*</span>
-              </label>
-              <input type="text" class="field-divided" name="guestFullName" value="" [(ngModel)]="message.guestFullName" />
-            </li>
-            <li>
-              <label for="mealChoicePlusOne">
-                 Meal choice: 
-              </label>
-              <select name="mealChoicePlusOne" class="field-select" [(ngModel)]="message.mealChoicePlusOne">
-                <option value="No selection">  Please Select  </option>
-                <option value=" Chicken "> Chicken </option>
-                <option value=" Beef "> Beef </option>
-              </select>
-            </li>
-            <li>
-              <label for="allergiesPlusOne">
-                 Allergies/Dietary Restrictions? 
-              </label>
-              <input type="text" class="field-divided" name="allergies2" value="" [(ngModel)]="message.allergiesPlusOne" />
-            </li>
-            <li>
-              <label for="songsSuggestion">
-                 Songs you’d like to suggest for the party? 
-              </label>
-              <input type="text" class="field-divided" name="songs" value="" [(ngModel)]="message.songsSuggestion" />
+              <input type="text" class="field-divided" name="notes" value="" [(ngModel)]="message.optionalNotes" />
             </li>
 
             <li class="field-divided">
